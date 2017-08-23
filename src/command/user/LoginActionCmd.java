@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import command.Command;
 
@@ -15,7 +16,19 @@ public class LoginActionCmd implements Command {
 			throws ServletException, IOException {
 		
 		//기능 구현
+		System.out.println("LoginActionCmd-Start");
 		
-		return null;
+		HttpSession session= request.getSession();
+		
+		
+		String userId= request.getParameter("userId");
+		session.setAttribute("userId", userId);
+		
+		System.out.println(userId);
+		
+		
+		System.out.println("LoginActionCmd-End");
+		return "/main.jsp";
+		
 	}//end execute method
 }//end class

@@ -15,6 +15,7 @@ public class JoinActionCmd implements Command {
 			throws ServletException, IOException {
 		
 		//기능 구현
+		System.out.println("JoinActionCmd");
 		
 		return null;
 	}//end execute method

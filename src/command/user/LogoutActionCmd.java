@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import command.Command;
 
@@ -15,7 +16,14 @@ public class LogoutActionCmd implements Command {
 			throws ServletException, IOException {
 		
 		//기능 구현
+		System.out.println("LogoutActionCmd-Start");
 		
-		return null;
+		HttpSession session= request.getSession();
+		session.invalidate();
+		
+		
+		System.out.println("LogoutActionCmd-End");
+		return "/main.jsp";
+		
 	}//end execute method
 }//end class

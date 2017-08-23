@@ -11,10 +11,7 @@
 
 <jsp:include page="/layout/header.jsp" />
 
-<div class="container">
-	<h1> 관리자 메인 페이지 </h1>
-	<img src="../resources/images/dashboard-exam.png" class="img-responsive" width="100%" height="345"/>
-</div>
+<h1> 상품 검색 페이지 </h1>
 
 
 </body>

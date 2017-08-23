@@ -39,9 +39,11 @@ public class FrontController extends HttpServlet {
 		Command command= null;
 		
 		String uri= request.getRequestURI();
-		String conPath= request.getContextPath();
-		String com= uri.substring(conPath.length());
-		
+//		String conPath= request.getContextPath();
+//		String com= uri.substring(conPath.length());
+		String com= "/"+uri.substring(uri.lastIndexOf('/')+1);
+
+		System.out.println("호출한 커맨드 : " + com);
 		
 		//관리자 페이지 기능
 		if(com.equals("/AdminMainView.do")){
@@ -187,7 +189,7 @@ public class FrontController extends HttpServlet {
 		}
 		
 		else{
-			viewPage= "main.jsp";
+			viewPage= "/main.jsp";
 		}
 		
 		
