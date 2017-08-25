@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import command.Command;
+import dao.NoticeBoardDao;
+import vo.NoticeBoardVo;
 
 public class NoticeUpdateViewCmd implements Command {
 
@@ -15,7 +17,14 @@ public class NoticeUpdateViewCmd implements Command {
 			throws ServletException, IOException {
 		
 		//기능 구현
+		int noticeIdx= Integer.parseInt(request.getParameter("noticeIdx"));
 		
-		return null;
+		NoticeBoardDao dao= new NoticeBoardDao();
+		NoticeBoardVo vo= dao.getBoard(noticeIdx);
+		
+		request.setAttribute("vo", vo);
+		
+		return "/board/notice_update.jsp";
+		
 	}//end execute method
 }//end class

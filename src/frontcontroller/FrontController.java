@@ -98,6 +98,9 @@ public class FrontController extends HttpServlet {
 			command= new NoticeWriteActionCmd();
 			viewPage= command.execute(request, response);
 			
+		}else if(com.equals("/NoticeWriteView.do")){
+			viewPage= "/board/notice_write.jsp";
+			
 		}
 		
 		

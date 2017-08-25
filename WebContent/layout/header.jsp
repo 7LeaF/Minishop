@@ -67,14 +67,14 @@
          <ul class="nav navbar-nav">
            <c:choose>
            <c:when test="${sessionScope.userId== 'admin' && pageContext.request.servletPath== '/admin/admin_main.jsp'}">
-	           <li><a href="${project}/board/notice_board.jsp"><p style="color:SlateBlue;">공지사항</p></a></li>
+	           <li><a href="${project}/board/NoticeList.do"><p style="color:SlateBlue;">공지사항</p></a></li>
 	           <li><a href="${project}/admin/product_manage.jsp"><p style="color:SlateBlue;">상품관리</p></a></li>
 	           <li><a href="${project}/admin/order_manage.jsp"><p style="color:SlateBlue;">주문관리</p></a></li>
 	           <li><a href="${project}/admin/user_manage.jsp"><p style="color:SlateBlue;">회원관리</p></a></li>
 	           <li><a href="${project}/board/qna_board.jsp"><p style="color:SlateBlue;">Q&A 게시판</p></a></li>
            </c:when>
            <c:otherwise>
-	           <li><a href="${project}/board/notice_board.jsp">공지사항</a></li>
+	           <li><a href="${project}/board/NoticeList.do">공지사항</a></li>
 	           <li><a href="${project}/product/product_list.jsp">카테고리</a></li>
 	           <li><a href="${project}/user/order_check.jsp">주문조회</a></li>
 	           <li><a href="${project}/user/cart.jsp">장바구니</a></li>

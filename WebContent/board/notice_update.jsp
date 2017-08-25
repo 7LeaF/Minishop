@@ -11,8 +11,28 @@
 
 <jsp:include page="/layout/header.jsp" />
 
-<h1> 공지게시판 글수정 페이지 </h1>
-
+<div class="container">
+	<div class="row">
+	<form method="post" action="NoticeUpdateAction.do?noticeIdx=${requestScope.vo.noticeIdx}">
+		<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
+			<thead>
+				<tr>
+					<th colspan="2" style="background-color: #eeeeee; text-align: center;">공지사항 게시판 수정</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><input type="text" class="form-control" placeholder="글 제목" name="noticeTitle" maxlength="50" value="${requestScope.vo.noticeTitle}"></td>
+				</tr>
+				<tr>
+					<td><textarea class="form-control" placeholder="글 내용" name="noticeContent" maxlength="2048" style="height: 350px;">${requestScope.vo.noticeContent}</textarea></td>
+				</tr>
+			</tbody>
+		</table>
+		<input type="submit" class="btn btn-primary pull-right" value="글수정"  onclick="return confirm('정말로 수정 하시겠습니까?')">
+	</form>
+	</div>
+</div>
 
 </body>
 </html>
