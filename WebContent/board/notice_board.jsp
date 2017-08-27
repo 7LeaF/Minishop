@@ -26,7 +26,7 @@ NOTICE_AVAILABLE                                   NUMBER(2)
 		<div class="col-md-1"></div>
 		<div class="col-md-10 col-sm-12">
 		<h3> 공지사항 게시판 </h3>
-			<table class="table table-striped table-bordered" style="text-align: center; border: 1px solid #dddddd;">
+			<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd;">
 				<thead>
 					<tr>
 						<th style="width: 5%; background-color: #eeeeee; text-align: center;">번호</th>
@@ -41,7 +41,9 @@ NOTICE_AVAILABLE                                   NUMBER(2)
 						<tr>
 			 				<td>${voList.noticeIdx}</td>
 							<td>${voList.noticeWriter}</td>
-							<td><a href="NoticeContentView.do?noticeIdx=${voList.noticeIdx}">${fn:replace(voList.noticeTitle,' ','&nbsp;')}</a></td> <!-- 리스트 출력시 띄어쓰기 처리 -->
+							<td style="text-align: left;">
+								<a href="NoticeContentView.do?noticeIdx=${voList.noticeIdx}">${fn:replace(voList.noticeTitle,' ','&nbsp;')}</a>
+							</td> <!-- 리스트 출력시 띄어쓰기 처리 -->
 							<td>${fn:substring(voList.noticeDate,0,11)} (${fn:substring(voList.noticeDate,11,13)}시 ${fn:substring(voList.noticeDate,14,16)}분)</td>
 							<td>${voList.noticeHit}</td>
 						</tr>

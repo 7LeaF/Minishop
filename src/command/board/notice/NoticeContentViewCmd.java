@@ -39,7 +39,7 @@ public class NoticeContentViewCmd implements Command {
 		//게시글 번호 파라미터 임의 조작으로 인한 데이터베이스 오류 방지
 		if(noticeIdx <= 0 || dao.getNextIdx() <= noticeIdx){
 			request.setAttribute("errorType", "accessError");
-			return "/error/accessError.jsp";
+			return "/error/access_error.jsp";
 		}
 		
 		

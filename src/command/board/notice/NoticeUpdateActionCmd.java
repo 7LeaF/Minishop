@@ -39,13 +39,19 @@ public class NoticeUpdateActionCmd implements Command {
 		//로그인 체크
 		if(userId== null){
 			request.setAttribute("errorType", "isNotLogin");
-			return "/error/boardUpdateError.jsp";	
+			return "/error/board_error.jsp";	
+		}
+		
+		//관리자가 아닌 경우 글 쓰기 불가
+		if(!userId.equals("admin")){
+			request.setAttribute("errorType", "isNotAdmin");
+			return "/error/board_error.jsp";
 		}
 		
 		//게시글 번호 파라미터 임의 조작으로 인한 데이터베이스 오류 방지
 		if(noticeIdx <= 0 || dao.getNextIdx() <= noticeIdx){
 			request.setAttribute("errorType", "invalidContent");
-			return "/error/boardUpdateError.jsp";
+			return "/error/access_error.jsp";
 		}
 		
 		
@@ -54,14 +60,14 @@ public class NoticeUpdateActionCmd implements Command {
 		
 		if(!userId.equals(vo.getNoticeWriter())){
 			request.setAttribute("errorType", "notAuth");
-			return "/error/boardUpdateError.jsp";
+			return "/error/board_error.jsp";
 		}
 		
 		//입력 값 중 비어있는 값이 있는 경우 체크
 		if(request.getParameter("noticeTitle")== null || request.getParameter("noticeContent")== null
 				|| request.getParameter("noticeTitle").equals("") || request.getParameter("noticeContent").equals("")){
 			request.setAttribute("errorType", "isNull");
-			return "/error/boardUpdateError.jsp";
+			return "/error/board_error.jsp";
 			
 		}
 		
@@ -78,7 +84,7 @@ public class NoticeUpdateActionCmd implements Command {
 		
 		if(result== -1){
 			request.setAttribute("errorType", "updateFail");
-			return "/error/boardUpdateError.jsp";
+			return "/error/fatal_error.jsp";
 			
 		}else{
 			System.out.println("NoticeUpdateActionCmd-End");

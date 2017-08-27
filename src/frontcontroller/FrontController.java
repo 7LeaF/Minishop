@@ -137,6 +137,9 @@ public class FrontController extends HttpServlet {
 			command= new QnaWriteActionCmd();
 			viewPage= command.execute(request, response);
 			
+		}else if(com.equals("/QnaWriteView.do")){
+			viewPage= "/board/qna_write.jsp";
+			
 		}
 		
 		

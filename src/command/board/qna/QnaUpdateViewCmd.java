@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import command.Command;
+import dao.QnaBoardDao;
+import vo.QnaBoardVo;
 
 public class QnaUpdateViewCmd implements Command {
 
@@ -15,7 +17,14 @@ public class QnaUpdateViewCmd implements Command {
 			throws ServletException, IOException {
 		
 		//기능 구현
+		int qnaIdx= Integer.parseInt(request.getParameter("qnaIdx"));
 		
-		return null;
+		QnaBoardDao dao= new QnaBoardDao();
+		QnaBoardVo vo= dao.getBoard(qnaIdx);
+		
+		request.setAttribute("vo", vo);
+		
+		return "/board/qna_update.jsp";
+		
 	}//end execute method
 }//end class

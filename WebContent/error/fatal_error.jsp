@@ -9,7 +9,7 @@
 <title>AcessError Page</title>
 </head>
 <body>
-	<img src="../resources/images/error.jpg">
+	<img src="../resources/images/fatal_error.jpg">
 	
 	<script>
 	//alert('잘못된 접근입니다.');

@@ -33,14 +33,14 @@ public class NoticeWriteActionCmd implements Command {
 		//로그인이 되어있지 않은 경우 글 쓰기 불가
 		if(userId== null){
 			request.setAttribute("errorType", "isNotLogin");
-			return "/error/boardWriteError.jsp";
+			return "/error/board_error.jsp";
 			
 		}
 		
 		//관리자가 아닌 경우 글 쓰기 불가
 		if(!userId.equals("admin")){
 			request.setAttribute("errorType", "isNotAdmin");
-			return "/error/boardWriteError.jsp";
+			return "/error/board_error.jsp";
 		}
 		
 		//로그인이 되어 있는 경우
@@ -51,7 +51,7 @@ public class NoticeWriteActionCmd implements Command {
 		//제목, 내용 둘 중 하나가 비어있는지 체크
 		if(vo.getNoticeTitle()== null || vo.getNoticeContent()== null){
 			request.setAttribute("errorType", "isNull");
-			return "/error/boardWriteError.jsp";
+			return "/error/board_error.jsp";
 			
 		}
 		
@@ -67,8 +67,8 @@ public class NoticeWriteActionCmd implements Command {
 		
 		if (result == -1){
 			//데이터베이스에 데이터 입력 과정 에서 오류 발생시 처리
-			request.setAttribute("errorType", "writeError");
-			return "/error/boardWriteError.jsp";
+			request.setAttribute("errorType", "writeFail");
+			return "/error/fatal_error.jsp";
 			
 		}else {
 			//글 정상 등록

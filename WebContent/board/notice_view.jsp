@@ -43,7 +43,7 @@
 				</tbody>
 			</table>
 			<a href="NoticeList.do" class="btn btn-primary">목록</a>
-			<%-- ${vo.noticeWriter } : ${sessionScope.userId} --%> <!-- userId != null && userId.equals(vo.getNoticeWriter()) -->
+
 			<c:if test="${sessionScope.userId!= null && sessionScope.userId== vo.noticeWriter }">
 					<a href="NoticeUpdateView.do?noticeIdx=${vo.noticeIdx}" class="btn btn-primary">수정</a>
 					<a href="NoticeDeleteAction.do?noticeIdx=${vo.noticeIdx}" class="btn btn-primary" onclick="return confirm('정말로 삭제 하시겠습니까?')">삭제</a>

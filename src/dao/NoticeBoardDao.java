@@ -232,6 +232,8 @@ public class NoticeBoardDao {
 		return -1; //데이터베이스 오류
 	}
 	
+	
+	//조회수 추가
 	public void addHit(int noticeIdx){
 		Connection conn= JdbcUtil.getConnection();
 		PreparedStatement pstmt= null;
@@ -252,6 +254,6 @@ public class NoticeBoardDao {
 			JdbcUtil.close(pstmt);
 			JdbcUtil.close(conn);
 		}
-	}
+	}//addHit method end
 	
 }//class end
