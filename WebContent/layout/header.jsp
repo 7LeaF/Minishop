@@ -26,7 +26,7 @@
        
        <c:choose>
        	<c:when test="${sessionScope.userId== 'admin'}">
-	       <a href="${project}/user/user_modify.jsp">회원관리</a>
+	       <a href="UserModifyView.do">회원관리</a>
 	        &nbsp;|&nbsp;
 	       <a href="LogoutAction.do">로그아웃</a>
 	       	&nbsp;|&nbsp;
@@ -34,7 +34,7 @@
 	       <br>${sessionScope.userId }님 반갑습니다.
        	</c:when>
        	<c:when test="${!empty sessionScope.userId}">
-	       <a href="${project}/user/user_modify.jsp">회원관리</a>
+	       <a href="UserModifyView.do">회원관리</a>
 	        &nbsp;|&nbsp;
 	       <a href="LogoutAction.do">로그아웃</a>
 	       <br>${sessionScope.userId }님 반갑습니다.

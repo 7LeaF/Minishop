@@ -13,9 +13,37 @@
 	<%-- user 에러 체크 페이지 --%>
 
 	<c:choose>
-		<c:when test="${requestScope.errorType== 'xxxx' }">
+		<c:when test="${requestScope.errorType== 'loginError' }">
 			<script>
-			alert('xxxxxx');
+			alert('아이디 또는 비밀번호가 일치하지 않습니다.');
+			history.back();
+			</script>
+		</c:when>
+		
+		<c:when test="${requestScope.errorType== 'passwordNotSame' }">
+			<script>
+			alert('비밀번호가 서로 일치하지 않습니다.');
+			history.back();
+			</script>
+		</c:when>
+		
+		<c:when test="${requestScope.errorType== 'isNull' }">
+			<script>
+			alert('입력되지 않은 값이 있습니다.');
+			history.back();
+			</script>
+		</c:when>
+		
+		<c:when test="${requestScope.errorType== 'isDuplicated' }">
+			<script>
+			alert('이미 존재하는 아이디 입니다.');
+			history.back();
+			</script>
+		</c:when>
+		
+		<c:when test="${requestScope.errorType== 'authError' }">
+			<script>
+			alert('비밀번호가 일치하지 않습니다.');
 			history.back();
 			</script>
 		</c:when>

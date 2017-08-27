@@ -30,7 +30,7 @@ userEmail
 			</div>
 			
 			<div class="jumbotron" style="padding-top: 30px; padding-bottom: 15px;">
-			<form>
+			<form action="JoinAction.do">
 				
 				<div class="form-group">
 				  <label for="userId">ID:</label>
@@ -38,7 +38,7 @@ userEmail
 				</div>
 				<div class="form-group">
 				  <label for="userPassword">Password:</label>
-				  <input type="password" class="form-control" placeholder="비밀번호" name="userPassword">
+				  <input type="password" class="form-control" placeholder="비밀번호" name="userPassword1">
 				</div>
 				
 				<div class="form-group">
@@ -53,7 +53,7 @@ userEmail
 				
 				<div class="form-group">
 				  <label for="userAddress">Address:</label>
-				  <input type="text" class="form-control" placeholder="주소" name="userAddress">
+				  <input type="text" class="form-control" placeholder="주소1" name="userAddress1">
 				  <label for="userAddress2"></label>
 				  <input type="text" class="form-control" placeholder="주소2" name="userAddress2">
 				</div>
@@ -69,7 +69,8 @@ userEmail
 				</div>
 				
 				<p style="text-align:center;">
-					<a href="JoinAction.do" class="btn btn-default" role="button">회원가입</a>
+					<input type="submit" class="btn btn-default" value="회원가입">
+					<!-- <a href="JoinAction.do" class="btn btn-default" role="button">회원가입</a> -->
 					<a href="#" class="btn btn-default" role="button" onclick="history.back();">돌아가기</a>
 				</p>
 			</form>
