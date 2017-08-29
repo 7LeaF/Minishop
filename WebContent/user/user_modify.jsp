@@ -21,7 +21,7 @@
 			</div>
 			
 			<div class="jumbotron" style="padding-top: 30px; padding-bottom: 15px;">
-			<form action="UserModifyAction.do">
+			<form action="UserModifyAction.do" method="post">
 				
 				<div class="form-group">
 				  <label for="userId">ID:</label>
@@ -77,7 +77,6 @@
 		<div class="col-md-3"></div>
 	</div>
 </div> <!-- close div container  -->
-
 
 </body>
 </html>

@@ -11,15 +11,6 @@
 
 <jsp:include page="/layout/header.jsp" />
 
-<!-- 
-userId
-userPassword
-userName
-userAddress
-userPhone
-userEmail 
--->
-
 <div class="container">
 <div class="row">
 	<div class="col-md-3"></div>
@@ -30,7 +21,7 @@ userEmail
 			</div>
 			
 			<div class="jumbotron" style="padding-top: 30px; padding-bottom: 15px;">
-			<form action="JoinAction.do">
+			<form action="JoinAction.do" method="post">
 				
 				<div class="form-group">
 				  <label for="userId">ID:</label>

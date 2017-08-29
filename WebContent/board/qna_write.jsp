@@ -12,11 +12,12 @@
 <jsp:include page="/layout/header.jsp" />
 
 <div class="container">
+<p style="padding-left:10px;"><a href="main.do">홈</a> > <a href="QnaList.do">문의게시판</a></p>
+
 		<div class="row">
+		<div class="col-md-offset-1 col-md-10 col-sm-12">
+		<h3 style="text-align:center;"> 문의 게시판 </h3>
 		
-		<div class="col-md-1"></div>
-		
-		<div class="col-md-10 col-sm-12">
 		<form method="post" action="QnaWriteAction.do">
 			<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
 				<thead>

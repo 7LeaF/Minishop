@@ -11,24 +11,13 @@
 <body>
 
 <jsp:include page="/layout/header.jsp" />
-<!-- 
- QNA_IDX                                   NOT NULL NUMBER(10)
- QNA_TITLE                                          VARCHAR2(200)
- QNA_CONTENT                                        VARCHAR2(3000)
- QNA_WRITER                                         VARCHAR2(20)
- QNA_DATE                                           DATE
- QNA_HIT                                            NUMBER(10)
- QNA_AVAILABLE                                      NUMBER(2)
- QNA_GROUP                                          NUMBER(10)
- QNA_STEP                                           NUMBER(10)
- QNA_INDENT                                         NUMBER(10)
- -->
+
 <div class="container">
-		
+<p style="padding-left:10px;"><a href="main.do">홈</a> > <a href="QnaList.do">문의게시판</a></p>
+
 		<div class="row">
-		<div class="col-md-1"></div>
-		<div class="col-md-10 col-sm-12">
-		<h3> 문의 게시판 </h3>
+		<div class="col-md-offset-1 col-md-10 col-sm-12">
+		<h3 style="text-align:center;"> 문의 게시판 </h3>
 			<table class="table" style="text-align: center; border: 1px solid #dddddd;">
 				<thead>
 					<tr>

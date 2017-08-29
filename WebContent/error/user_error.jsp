@@ -48,10 +48,17 @@
 			</script>
 		</c:when>
 		
-		<c:when test="${requestScope.errorType== 'xxxx' }">
+		<c:when test="${requestScope.errorType== 'isNotLogin' }">
 			<script>
-			alert('xxxxxx');
-			location.href= 'xxxxxx.do';
+			alert('로그인이 되어있지 않습니다.');
+			history.back();
+			</script>
+		</c:when>
+		
+		<c:when test="${requestScope.errorType== 'successMessage' }">
+			<script>
+			alert('회원정보 변경이 완료되었습니다.');
+			location.href= 'main.do';
 			</script>
 		</c:when>
 		

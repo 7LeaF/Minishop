@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import command.Command;
+import dao.ProductDao;
+import vo.ProductVo;
 
 public class ProductViewCmd implements Command {
 
@@ -14,8 +16,16 @@ public class ProductViewCmd implements Command {
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		//기능 구현
+		System.out.println("productorViewCmd.start");
+		String productCode = request.getParameter("productCode");
 		
-		return null;
+		ProductDao dao = new ProductDao();
+		ProductVo vo = dao.getProduct(productCode);
+		
+		request.setAttribute("vo", vo);
+
+		System.out.println("productViewCmd.end");
+		return "/product/product_detail.jsp";
+		
 	}//end execute method
 }//end class

@@ -74,8 +74,9 @@ public class UserModifyActionCmd implements Command {
 			return "/error/fatal_error.jsp";
 			
 		}else{
+			request.setAttribute("errorType", "successMessage");
 			System.out.println("UserModifyActionCmd-End");
-			return "/main.do";	
+			return "/error/user_error.jsp";	
 		}
 		
 	}//end execute method

@@ -12,12 +12,17 @@
 <jsp:include page="/layout/header.jsp" />
 
 <div class="container">
+<p style="padding-left:10px;"><a href="main.do">홈</a> > <a href="NoticeList.do">공지사항</a></p>
+
 	<div class="row">
+	<div class="col-md-offset-1 col-md-10 col-sm-12">
+	<h3 style="text-align:center;"> 공지사항 게시판 </h3>
+	
 	<form method="post" action="NoticeUpdateAction.do?noticeIdx=${requestScope.vo.noticeIdx}">
 		<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
 			<thead>
 				<tr>
-					<th colspan="2" style="background-color: #eeeeee; text-align: center;">공지사항 게시판 수정</th>
+					<th colspan="2" style="background-color: #eeeeee; text-align: center;">게시글 수정하기</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -31,6 +36,8 @@
 		</table>
 		<input type="submit" class="btn btn-primary pull-right" value="글수정"  onclick="return confirm('정말로 수정 하시겠습니까?')">
 	</form>
+	
+	</div>
 	</div>
 </div>
 

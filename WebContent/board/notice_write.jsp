@@ -14,11 +14,12 @@
 <!-- <h1> 공지게시판 글쓰기 페이지 </h1> -->
 
 <div class="container">
+<p style="padding-left:10px;"><a href="main.do">홈</a> > <a href="NoticeList.do">공지사항</a></p>
+
 		<div class="row">
+		<div class="col-md-offset-1 col-md-10 col-sm-12">
+		<h3 style="text-align:center;"> 공지사항 게시판</h3>
 		
-		<div class="col-md-1"></div>
-		
-		<div class="col-md-10 col-sm-12">
 		<form method="post" action="NoticeWriteAction.do">
 			<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
 				<thead>

@@ -65,7 +65,7 @@
        <div id="navbar" class="navbar-collapse collapse">
          <ul class="nav navbar-nav">
            <c:choose>
-           <c:when test="${sessionScope.userId== 'admin'}">
+           <c:when test="${sessionScope.userId== 'admin' && pageContext.request.servletPath== '/admin/admin_main.jsp'}">
 	           <li><a href="NoticeList.do"><p style="color:SlateBlue;">공지사항</p></a></li>
 	           <li><a href="ProductManageView.do"><p style="color:SlateBlue;">상품관리</p></a></li>
 	           <li><a href="OrderManageView.do"><p style="color:SlateBlue;">주문관리</p></a></li>
@@ -74,14 +74,7 @@
            </c:when>
            <c:otherwise>
 	           <li><a href="NoticeList.do">공지사항</a></li>
-	           <li class="dropdown">
-			        <a class="dropdown-toggle" data-toggle="dropdown" href="#">카테고리<span class="caret"></span></a>
-			        <ul class="dropdown-menu">
-			          <li><a href="ProductList.do?category_code=all">모두</a></li>
-			          <li><a href="ProductList.do?category_code=0001">0001</a></li>
-			          <li><a href="ProductList.do?category_code=0002">0002</a></li>
-			        </ul>
-			   </li>
+	           <li><a href="ProductList.do?category_Code=all">카테고리</a></li>
 	           <li><a href="OrderCheckView.do">주문조회</a></li>
 	           <li><a href="${project}/user/cart.jsp">장바구니</a></li>
 	           <li><a href="QnaList.do">Q&A 게시판</a></li>

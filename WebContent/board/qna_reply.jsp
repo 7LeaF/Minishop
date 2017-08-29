@@ -12,7 +12,12 @@
 <jsp:include page="/layout/header.jsp" />
 
 <div class="container">
+<p style="padding-left:10px;"><a href="main.do">홈</a> > <a href="QnaList.do">문의게시판</a></p>
+
 	<div class="row">
+	<div class="col-md-offset-1 col-md-10 col-sm-12">
+	<h3 style="text-align:center;"> 문의 게시판 </h3>
+	
 	<form method="post" action="QnaReplyAction.do?qnaIdx=${requestScope.vo.qnaIdx}">
 	
 		<input type="hidden" name="qnaGroup" value="${requestScope.vo.qnaGroup}">
@@ -36,6 +41,8 @@
 		</table>
 		<input type="submit" class="btn btn-primary pull-right" value="답글달기"  onclick="return confirm('정말로 답변글을 등록 하시겠습니까?')">
 	</form>
+	
+	</div>
 	</div>
 </div>
 

@@ -21,7 +21,7 @@
 			</div>
 			
 			<div class="jumbotron" style="padding-top: 30px; padding-bottom: 15px;">
-			<form action="LoginAction.do">
+			<form action="LoginAction.do" method="post">
 				<div class="form-group">
 				  <label for="userId">ID:</label>
 				  <input type="text" class="form-control" placeholder="아이디" name="userId">

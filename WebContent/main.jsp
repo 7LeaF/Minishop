@@ -45,7 +45,7 @@
     <div class="row">
           <div class="col-xs-6 col-sm-4">
             <div class="thumbnail">
-                <img class="img-responsive" src="${project}/resources/images/product_diva1.jpg" alt="송하나 인형">
+                <img class="img-responsive" src="${project}/resources/images/products/product_diva1.jpg" alt="송하나 인형">
                 <div class="add-to-cart">
                       <a href="#" class="glyphicon glyphicon-shopping-cart pull-right" data-toggle="tooltip" data-placement="top" title="Add to cart"></a>
                 </div>
@@ -63,7 +63,7 @@
 
           <div class="col-xs-6 col-sm-4">
             <div class="thumbnail">
-                <img class="img-responsive" src="${project}/resources/images/product_ant1.jpg" alt="개미 인형">
+                <img class="img-responsive" src="${project}/resources/images/products/product_ant1.jpg" alt="개미 인형">
                 <div class="add-to-cart">
                       <a href="#" class="glyphicon glyphicon-shopping-cart pull-right" data-toggle="tooltip" data-placement="top" title="Add to cart"></a>
                 </div>
@@ -81,7 +81,7 @@
 
           <div class="col-xs-6 col-sm-4">
             <div class="thumbnail">
-                <img class="img-responsive" src="${project}/resources/images/product_bear1.jpg" alt="곰 인형">
+                <img class="img-responsive" src="${project}/resources/images/products/product_bear1.jpg" alt="곰 인형">
                 <div class="add-to-cart">
                       <a href="#" class="glyphicon glyphicon-shopping-cart pull-right" data-toggle="tooltip" data-placement="top" title="Add to cart"></a>
                 </div>
@@ -97,7 +97,7 @@
             </div>
           </div>
       </div> <!-- close div row -->
-</div>
+</div> <!-- close div container -->
 
 </body>
 </html>

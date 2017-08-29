@@ -37,5 +37,6 @@ public class UserModifyViewCmd implements Command {
 		request.setAttribute("vo", vo);
 		
 		return "/user/user_modify.jsp";
+		
 	}//end execute method
 }//end class
