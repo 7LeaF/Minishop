@@ -8,6 +8,7 @@
 <title>Mini Shop</title>
 
 <script type="text/javascript">
+/*회원 ID 중복 조회 */
 function isIdFunction() {
 	var userId = $('#userId').val();	
 $.ajax({
@@ -30,6 +31,16 @@ $.ajax({
 		}
 	});	
 }
+
+/*Captcha 스크립트 */
+function FormSubmit() {
+	if (grecaptcha.getResponse() == ""){
+	   alert("자동가입 방지 체크를 해야 합니다.");
+	   return false; 
+	} else {
+	      return true; 
+	} 
+}
 </script>
 
 
@@ -48,7 +59,8 @@ $.ajax({
 			</div>
 			
 			<div class="jumbotron" style="padding-top: 30px; padding-bottom: 15px;">
-			<form action="JoinAction.do" method="post">
+			<form action="JoinAction.do" method="post" onsubmit="return FormSubmit();">
+			<!-- <form action="JoinAction.do" method="post"> -->
 				
 				<div class="form-group has-feedback" id="userIdForm">
 				  <label for="userId">ID:</label> <span id="checkMessage"></span>
@@ -89,9 +101,11 @@ $.ajax({
 				  <input type="email" class="form-control" placeholder="이메일 주소" name="userEmail">
 				</div>
 				
+				<!-- <div class="g-recaptcha g-recaptcha-outer g-recaptcha-inner g-recaptcha" data-sitekey="6Lfv2S4UAAAAAPGjrRUnOWL9tx6bCjntmErei30t"></div> -->
+				<div class="g-recaptcha" data-theme="light" data-sitekey="6Lfv2S4UAAAAAPGjrRUnOWL9tx6bCjntmErei30t" style="transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;"></div> 
+				
 				<p style="text-align:center;">
 					<input type="submit" class="btn btn-default" value="회원가입">
-					<!-- <a href="JoinAction.do" class="btn btn-default" role="button">회원가입</a> -->
 					<a href="#" class="btn btn-default" role="button" onclick="history.back();">돌아가기</a>
 				</p>
 			</form>
@@ -103,5 +117,6 @@ $.ajax({
 	
 </div> <!-- close div container  -->
 
+<script src='https://www.google.com/recaptcha/api.js'></script>
 </body>
 </html>
