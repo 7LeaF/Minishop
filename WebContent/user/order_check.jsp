@@ -36,7 +36,7 @@
   			<c:forEach var="vo" items="${requestScope.voList}">	
 			    <tr>
 			    <td>${vo.orderCode}</td>
-			    <td><img class="product-image" src="${project}/resources/images/products/${vo.productImage1}"></td>
+			    <td><a href="ProductView.do?productCode=${vo.productCode}"><img class="product-image" src="${project}/resources/images/products/${vo.productImage1}"></a></td>
 			    <td style="text-align: left; padding-left: 30px;">상품 이름 : ${vo.productName}<br>상품 수량 : ${vo.orderCount}<br>결제 금액 : ${vo.orderAmount}<br>주문 일자 : ${vo.orderDate}</td>
 			    <td>
 					<c:choose>

@@ -20,7 +20,7 @@ public class OrderDao {
 		PreparedStatement pstmt= null;
 		ResultSet rs= null;
 		
-		String SQL= "SELECT product_image1, product_name, order_code, order_count, order_amount, order_date, order_state"
+		String SQL= "SELECT product_code, product_image1, product_name, order_code, order_count, order_amount, order_date, order_state"
 				+ " FROM products p, orders o"
 				+ " where user_id_fk=? and o.product_code_pk=p.product_code";
 		
@@ -32,6 +32,7 @@ public class OrderDao {
 			while(rs.next()){
 				HashMap<String, String> map= new HashMap<>();
 				
+				map.put("productCode", rs.getString("product_code"));
 				map.put("productImage1", rs.getString("product_image1"));
 				map.put("productName", rs.getString("product_name"));
 				map.put("orderCode", rs.getString("order_code"));

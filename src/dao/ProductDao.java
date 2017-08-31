@@ -207,7 +207,7 @@ public class ProductDao {
 		PreparedStatement pstmt= null;
 		ResultSet rs= null;
 		
-		String sql = "SELECT product_name, product_message, product_image1 FROM products";	
+		String sql = "SELECT product_name, product_message, product_image1, product_code FROM products";	
 
 		try{
 			
@@ -219,6 +219,7 @@ public class ProductDao {
 				map.put("productName", rs.getString("product_name"));
 				map.put("productImage1", rs.getString("product_image1"));
 				map.put("productMessage", rs.getString("product_message"));
+				map.put("productCode", rs.getString("product_code"));
 				
 				list.add(map);
 
