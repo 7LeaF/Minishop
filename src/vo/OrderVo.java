@@ -9,104 +9,18 @@ public class OrderVo {
 	private String buyerName;
 	private String buyerAddress1;
 	private String buyerAddress2;
-	private int buyerPhone;
+	private String buyerPhone;
 	private String buyerEmail;
 	private String rcptName;
 	private String rcptAddress1;
 	private String rcptAddress2;
-	private int rcptPhone;
+	private String rcptPhone;
 	private String shipMessage;
 	private int orderAmount;
 	private int orderState;
 	private String orderDate;
 	
 	
-	//지워야함
-	private String productImage1;
-	private String productName;
-	private String productMessage;
-	private int productSale;
-	
-
-	public OrderVo(String productCodePk, int orderAmount, int orderState, String productImage1, String productName,
-			String productMessage, int productSale) {
-		super();
-		this.productCodePk = productCodePk;
-		this.orderAmount = orderAmount;
-		this.orderState = orderState;
-		this.productImage1 = productImage1;
-		this.productName = productName;
-		this.productMessage = productMessage;
-		this.productSale = productSale;
-	}
-
-
-	public OrderVo(String userIdFk, int orderAmount) {
-		super();
-		this.userIdFk = userIdFk;
-		this.orderAmount = orderAmount;
-	}
-	public OrderVo(String userIdFk, String productCodePk, int orderCount, String buyerName, String buyerAddress1,
-			String buyerAddress2, int buyerPhone, String buyerEmail, String rcptName, String rcptAddress1,
-			String rcptAddress2, int rcptPhone, String shipMessage) {
-		super();
-		this.userIdFk = userIdFk;
-		this.productCodePk = productCodePk;
-		this.orderCount = orderCount;
-		this.buyerName = buyerName;
-		this.buyerAddress1 = buyerAddress1;
-		this.buyerAddress2 = buyerAddress2;
-		this.buyerPhone = buyerPhone;
-		this.buyerEmail = buyerEmail;
-		this.rcptName = rcptName;
-		this.rcptAddress1 = rcptAddress1;
-		this.rcptAddress2 = rcptAddress2;
-		this.rcptPhone = rcptPhone;
-		this.shipMessage = shipMessage;
-	}
-	public OrderVo(){}
-	
-	
-	public String getProductImage1() {
-		return productImage1;
-	}
-
-
-	public void setProductImage1(String productImage1) {
-		this.productImage1 = productImage1;
-	}
-
-
-	public String getProductName() {
-		return productName;
-	}
-
-
-	public void setProductName(String productName) {
-		this.productName = productName;
-	}
-
-
-	public String getProductMessage() {
-		return productMessage;
-	}
-
-
-	public void setProductMessage(String productMessage) {
-		this.productMessage = productMessage;
-	}
-
-
-	public int getProductSale() {
-		return productSale;
-	}
-
-
-	public void setProductSale(int productSale) {
-		this.productSale = productSale;
-	}
-
-
 	public String getOrderCode() {
 		return orderCode;
 	}
@@ -149,10 +63,10 @@ public class OrderVo {
 	public void setBuyerAddress2(String buyerAddress2) {
 		this.buyerAddress2 = buyerAddress2;
 	}
-	public int getBuyerPhone() {
+	public String getBuyerPhone() {
 		return buyerPhone;
 	}
-	public void setBuyerPhone(int buyerPhone) {
+	public void setBuyerPhone(String buyerPhone) {
 		this.buyerPhone = buyerPhone;
 	}
 	public String getBuyerEmail() {
@@ -179,10 +93,10 @@ public class OrderVo {
 	public void setRcptAddress2(String rcptAddress2) {
 		this.rcptAddress2 = rcptAddress2;
 	}
-	public int getRcptPhone() {
+	public String getRcptPhone() {
 		return rcptPhone;
 	}
-	public void setRcptPhone(int rcptPhone) {
+	public void setRcptPhone(String rcptPhone) {
 		this.rcptPhone = rcptPhone;
 	}
 	public String getShipMessage() {
@@ -211,6 +125,7 @@ public class OrderVo {
 	}
 	
 }
+	
 
 /*CREATE TABLE ORDERS(
 		 ORDER_CODE VARCHAR2(20),

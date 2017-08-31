@@ -1,7 +1,6 @@
 package command.admin;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -12,34 +11,32 @@ import command.Command;
 import dao.UserDao;
 import vo.UserVo;
 
-public class UserManageViewCmd implements Command {
+public class UserManageModifyViewCmd implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
 		//기능 구현
-		HttpSession session= request.getSession();
-		
+		System.out.println("UserModifyViewCmd-Start");
+	
 		String userId= null;
 		
-		if(session.getAttribute("userId")!= null){
-			userId= (String) session.getAttribute("userId");
-		}
+		System.out.println("request.getParameter(userId)" + request.getParameter("userId"));
 		
-		//관리자가 아닌 경우 사용 불가
-		if(!userId.equals("admin")){
-			request.setAttribute("errorType", "isNotAdmin");
-			return "/error/admin_error.jsp";
-		}
+		if(request.getParameter("userId")!= null){
+			userId= request.getParameter("userId");
 		
+		}else{			
+			return "/error/access_error.jsp";
+		}
 		
 		
 		UserDao dao= new UserDao();
-		ArrayList<UserVo> voList= dao.getUserList();
+		UserVo vo= dao.getUserInfo(userId);
+		request.setAttribute("vo", vo);
 		
-		request.setAttribute("voList", voList);
+		return "/admin/user_manage_detail.jsp";
 		
-		return "/admin/user_manage.jsp";
 	}//end execute method
 }//end class

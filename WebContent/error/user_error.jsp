@@ -62,6 +62,13 @@
 			</script>
 		</c:when>
 		
+		<c:when test="${requestScope.errorType== 'phone' }">
+			<script>
+			alert(' - 없이 입력해 주세요.');
+			history.back();
+			</script>
+		</c:when>
+		
 		<c:otherwise>
 			<script>
 			alert('xxxxxx');

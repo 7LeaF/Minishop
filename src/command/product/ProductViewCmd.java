@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import command.Command;
 import dao.ProductDao;
@@ -17,6 +18,7 @@ public class ProductViewCmd implements Command {
 			throws ServletException, IOException {
 		
 		System.out.println("productorViewCmd.start");
+		
 		String productCode = request.getParameter("productCode");
 		
 		ProductDao dao = new ProductDao();

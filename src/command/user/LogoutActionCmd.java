@@ -19,11 +19,11 @@ public class LogoutActionCmd implements Command {
 		System.out.println("LogoutActionCmd-Start");
 		
 		HttpSession session= request.getSession();
-		session.invalidate();
-		
 		
 		System.out.println("LogoutActionCmd-End");
-		return "/main.jsp";
+		request.setAttribute("successType", "logout");
+		session.invalidate();
+		return "/error/success.jsp";
 		
 	}//end execute method
 }//end class

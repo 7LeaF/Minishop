@@ -58,6 +58,12 @@ public class JoinActionCmd implements Command {
 			return "/error/user_error.jsp";
 		}
 		
+		//'-' Ã³¸®
+		if(vo.getUserPhone().contains("-")){
+			request.setAttribute("errorType", "phone");
+			return "/error/user_error.jsp";
+			
+		}
 
 		UserDao dao= new UserDao();
 		
@@ -75,10 +81,17 @@ public class JoinActionCmd implements Command {
 			request.setAttribute("errorType", "joinFail");
 			return "/error/fatal_error.jsp";
 			
-		}else{
+			/*}else{
 			session.setAttribute("userId", vo.getUserId());
 			System.out.println("JoinActionCmd-End");
 			return "/main.do";	
+		}*/      
+		
+		}else{
+			session.setAttribute("userId", vo.getUserId());
+			System.out.println("JoinActionCmd-End");
+			request.setAttribute("successType", "join");
+			return "/error/success.jsp";   
 		}
 			
 	}//end execute method

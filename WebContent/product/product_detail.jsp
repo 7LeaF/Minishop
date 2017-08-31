@@ -83,7 +83,7 @@ function init(){
 						<label class="control-label">구매 수량:</label>
 						<div class="input-group">
 							<span class="input-group-btn"><button type="button" class="btn btn-default" onclick="QntyDown();">-</button></span>
-							<input id="productQnty" name="productQnty" class="form-control" type="text" value="1" min="1" max="10" style="text-align: center;">
+							<input id="orderQnty" name="orderQnty" class="form-control" type="text" value="1" min="1" max="10" style="text-align: center;">
 							<span class="input-group-btn"><button type="button" class="btn btn-default" onclick="QntyUp();">+</button></span>
 						</div>
 					</div>

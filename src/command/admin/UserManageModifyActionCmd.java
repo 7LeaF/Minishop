@@ -1,4 +1,4 @@
-package command.user;
+package command.admin;
 
 import java.io.IOException;
 
@@ -11,44 +11,45 @@ import command.Command;
 import dao.UserDao;
 import vo.UserVo;
 
-public class UserModifyActionCmd implements Command {
+public class UserManageModifyActionCmd implements Command{
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
 		//기능 구현
-		System.out.println("UserModifyActionCmd-Start");
+		System.out.println("UserManageModifyActionCmd-Start");
+		
 		HttpSession session= request.getSession();
 		
-		String userId= null;
-		if(session.getAttribute("userId")!= null){
-			userId= (String) session.getAttribute("userId");
+		String sessionId= null;
 		
-		}else{
-			//로그인 되어 있지 않으면 회원 정보 수정  불가능
+		if(session.getAttribute("userId")!= null){
+			sessionId= (String) session.getAttribute("userId");
+		}
+		
+		//관리자가 아닌 경우 사용 불가
+		if(!sessionId.equals("admin")){
+			request.setAttribute("errorType", "isNotAdmin");
+			return "/error/admin_error.jsp";
+		}
+		
+		
+		String userId= null;
+		
+		if(request.getParameter("userId")!= null){
+			userId= request.getParameter("userId");
+		
+		}else{			
 			return "/error/access_error.jsp";
 		}
 		
-
 		UserDao dao= new UserDao();
 		UserVo vo= dao.getUserInfo(userId);	//이전 정보 불러옴
 		
-		//현재 비밀번호 확인
-		int result= dao.UserAuth(userId, request.getParameter("currentUserPassword"));
+		System.out.println(request.getParameter("newUserPassword1"));
+		System.out.println(request.getParameter("newUserPassword2"));
 		
-			//비밀번호 틀림
-			if(result== 0){
-				request.setAttribute("errorType", "authError");
-				return "/error/user_error.jsp";
-			
-			}else if(result== -1){
-				//데이터베이스에 데이터 입력 과정 에서 오류 발생시 처리
-				request.setAttribute("errorType", "authFail");
-				return "/error/fatal_error.jsp";	
-			}
-		
-
 		//새 비밀번호 1,2 일치 여부 체크
 		if(!request.getParameter("newUserPassword1").equals(request.getParameter("newUserPassword2"))){
 			request.setAttribute("errorType", "passwordNotSame");
@@ -74,10 +75,11 @@ public class UserModifyActionCmd implements Command {
 			return "/error/fatal_error.jsp";
 			
 		}else{
-			request.setAttribute("successType", "modify");
-			System.out.println("UserModifyActionCmd-End");
-			return "/error/success.jsp";	
+			request.setAttribute("errorType", "modifyUserSuccess");
+			System.out.println("UserManageModifyActionCmd-End");
+			return "/error/admin_error.jsp";	
 		}
 		
-	}//end execute method
+	
+	}//end excute method
 }//end class

@@ -13,7 +13,7 @@
 <jsp:include page="/layout/header.jsp" />
 
 <div class="container">
-<p style="padding-left:10px;"><a href="main.do">홈</a> > <a href="OrderCheckView.do">조회하기</a></p>
+<p style="padding-left:10px;"><a href="main.do">홈</a> > <a href="OrderCheckView.do">주문 조회</a></p>
 
 		  <h3 style="text-align: center;">주문 조회</h3>
 		  <br>
@@ -37,20 +37,24 @@
 			    <tr>
 			    <td>${vo.orderCode}</td>
 			    <td><img class="product-image" src="${project}/resources/images/products/${vo.productImage1}"></td>
-			    <td style="text-align: left; padding-left: 30px;">상품 이름 : ${vo.productName}<br>결제 금액 : ${vo.orderAmount}<br>${vo.orderDate}</td>
+			    <td style="text-align: left; padding-left: 30px;">상품 이름 : ${vo.productName}<br>상품 수량 : ${vo.orderCount}<br>결제 금액 : ${vo.orderAmount}<br>주문 일자 : ${vo.orderDate}</td>
 			    <td>
 					<c:choose>
-					<c:when test="${vo.orderState == 0}">
-						주문 확인중
+					<c:when test="${vo.orderState == 0}"><!-- 주문완료 후 입금 대기 -->
+						입금 확인중<br>
+						<img src="${project}/resources/images/orderState1.jpg" />
 					</c:when>
-					<c:when test="${vo.orderState == 1}">
-						배송 준비중
+					<c:when test="${vo.orderState == 1}"><!-- 결제완료 후 배송 준비 -->
+						배송 준비중<br>
+						<img src="${project}/resources/images/orderState2.jpg" />
 					</c:when>
-					<c:when test="${vo.orderState == 2}">
-						현재 배송중
+					<c:when test="${vo.orderState == 2}"><!-- 상품발송 후 도착 대기 -->
+						현재 배송중<br>
+						<img src="${project}/resources/images/orderState3.jpg" />
 					</c:when>
-					<c:when test="${vo.orderState == 3}">
-						배송 완료됨
+					<c:when test="${vo.orderState == 3}"><!-- 수취주소 로 상품 도착 -->
+						배송 완료됨<br>
+						<img src="${project}/resources/images/orderState4.jpg" />
 					</c:when>
 					</c:choose>
 				</td>

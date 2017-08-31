@@ -30,7 +30,7 @@
 <jsp:include page="/layout/header.jsp" />
 
 <div class="container">
-<p style="padding-left:10px;"><a href="main.do">홈</a> > <a href="ProductManageView.do">상품관리</a></p>
+<p style="padding-left:10px;"><a href="main.do">관리자</a> > <a href="ProductManageView.do">상품관리</a></p>
 		
 		<div class="page-header">
 			  <h3 style="text-align: center;">상품 관리 페이지</h3>
@@ -74,11 +74,11 @@
 			</thead>
   				
   			<tbody>
-  				<c:forEach items="${list}" var="list">
+  				<c:forEach items="${voList}" var="vo">
 			    <tr>
 			    <td style= "text-align: center;"><input type="checkbox" class="checkthis" /></td>
-			    <td style= "text-align: center;"><img class="product-image" src="${pageContext.request.contextPath}/resources/images/products/${list.productImage1}"></td>
-			    <td>상품 이름 : ${list.productName}<br>상품 설명 : ${list.productMessage}<br><br></td>
+			    <td style= "text-align: center;"><img class="product-image" src="${pageContext.request.contextPath}/resources/images/products/${vo.productImage1}"></td>
+			    <td>상품 이름 : ${vo.productName}<br>상품 설명 : ${vo.productMessage}<br><br></td>
 
 			    <td style= "text-align: center;"><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
 			    <td style= "text-align: center;"><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>

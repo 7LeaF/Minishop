@@ -17,132 +17,72 @@ public class ProductVo {
 
 	public ProductVo(){}
 	
-	public ProductVo(String product_Code, String product_Name, String product_Company, int price_Retail,
-			int price_Sale, int product_Qnty, String product_Image1, String product_Image2, String product_Message,
-			String product_Date) {
-		super();
-		this.productCode = product_Code;
-		this.productName = product_Name;
-		this.productCompany = product_Company;
-		this.priceRetail = price_Retail;
-		this.priceSale = price_Sale;
-		this.productQnty = product_Qnty;
-		this.productImage1 = product_Image1;
-		this.productImage2 = product_Image2;
-		this.productMessage = product_Message;
-		this.productDate = product_Date;
-	}
-	
-	public ProductVo(String product_Name, int product_Qnty, String product_Image1, String product_Message, String product_Code) {
-		super();
-		this.productName = product_Name;
-		this.productQnty = product_Qnty;
-		this.productImage1 = product_Image1;
-		this.productMessage = product_Message;
-		this.productCode = product_Code;
-	}
-
-	public ProductVo(String product_Name, String product_Image1, String product_Message) {
-		super();
-		this.productName = product_Name;
-		this.productImage1 = product_Image1;
-		this.productMessage = product_Message;
-	}
-	
-	public ProductVo(String product_Code, String product_Name, String product_Company, int price_Retail,
-			int price_Sale, int product_Qnty, String product_Image1, String product_Image2, String product_Message,
-			String product_Date, String category1_Code_Fk) {
-		super();
-		this.productCode = product_Code;
-		this.productName = product_Name;
-		this.productCompany = product_Company;
-		this.priceRetail = price_Retail;
-		this.priceSale = price_Sale;
-		this.productQnty = product_Qnty;
-		this.productImage1 = product_Image1;
-		this.productImage2 = product_Image2;
-		this.productMessage = product_Message;
-		this.productDate = product_Date;
-		this.category1CodeFk = category1_Code_Fk;
-	}
-
-
 	public String getProductCode() {
 		return productCode;
 	}
-	public void setProductCode(String product_Code) {
-		this.productCode = product_Code;
+	public void setProductCode(String productCode) {
+		this.productCode = productCode;
 	}
 	public String getProductName() {
 		return productName;
 	}
-	public void setProductName(String product_Name) {
-		this.productName = product_Name;
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
 	public String getProductCompany() {
 		return productCompany;
 	}
-	public void setProductCompany(String product_Company) {
-		this.productCompany = product_Company;
+	public void setProductCompany(String productCompany) {
+		this.productCompany = productCompany;
 	}
 	public int getPriceRetail() {
 		return priceRetail;
 	}
-	public void setPriceRetail(int price_Retail) {
-		this.priceRetail = price_Retail;
+	public void setPriceRetail(int priceRetail) {
+		this.priceRetail = priceRetail;
 	}
 	public int getPriceSale() {
 		return priceSale;
 	}
-	public void setPriceSale(int price_Sale) {
-		this.priceSale = price_Sale;
+	public void setPriceSale(int priceSale) {
+		this.priceSale = priceSale;
 	}
 	public int getProductQnty() {
 		return productQnty;
 	}
-	public void setProductQnty(int product_Qnty) {
-		this.productQnty = product_Qnty;
+	public void setProductQnty(int productQnty) {
+		this.productQnty = productQnty;
 	}
 	public String getProductImage1() {
 		return productImage1;
 	}
-	public void setProductImage1(String product_Image1) {
-		this.productImage1 = product_Image1;
+	public void setProductImage1(String productImage1) {
+		this.productImage1 = productImage1;
 	}
 	public String getProductImage2() {
 		return productImage2;
 	}
-	public void setProductImage2(String product_Image2) {
-		this.productImage2 = product_Image2;
+	public void setProductImage2(String productImage2) {
+		this.productImage2 = productImage2;
 	}
 	public String getProductMessage() {
 		return productMessage;
 	}
-	public void setProductMessage(String product_Message) {
-		this.productMessage = product_Message;
+	public void setProductMessage(String productMessage) {
+		this.productMessage = productMessage;
 	}
 	public String getProductDate() {
 		return productDate;
 	}
-	public void setProductDate(String product_Date) {
-		this.productDate = product_Date;
+	public void setProductDate(String productDate) {
+		this.productDate = productDate;
 	}
 	public String getCategory1CodeFk() {
 		return category1CodeFk;
 	}
 
-	public void setCategory1CodeFk(String category1_Code_Fk) {
-		this.category1CodeFk = category1_Code_Fk;
-	}
-
-
-	@Override
-	public String toString() {
-		return "ProductsVo [product_Code=" + productCode + ", product_Name=" + productName + ", product_Company="
-				+ productCompany + ", price_Retail=" + priceRetail + ", price_Sale=" + priceSale + ", product_Qnty="
-				+ productQnty + ", product_Image1=" + productImage1 + ", product_Image2=" + productImage2
-				+ ", product_Message=" + productMessage + ", product_Date=" + productDate + ", category1_Code_Fk="
-				+ category1CodeFk + "]";
+	public void setCategory1CodeFk(String category1CodeFk) {
+		this.category1CodeFk = category1CodeFk;
 	}
 
 }

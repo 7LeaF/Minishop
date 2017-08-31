@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Mini Shop</title>
 </head>
-<body>
+<body onload="$('#userId').focus();">
 
 <jsp:include page="/layout/header.jsp" />
 
@@ -24,7 +24,7 @@
 			<form action="LoginAction.do" method="post">
 				<div class="form-group">
 				  <label for="userId">ID:</label>
-				  <input type="text" class="form-control" placeholder="아이디" name="userId">
+				  <input type="text" class="form-control" placeholder="아이디" name="userId" id="userId">
 				</div>
 				<div class="form-group">
 				  <label for="userPassword">Password:</label>

@@ -1,6 +1,7 @@
-package command.product;
+package command.admin;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 import javax.servlet.ServletException;
@@ -12,56 +13,49 @@ import command.Command;
 import dao.OrderDao;
 import vo.OrderVo;
 
-public class ProductOrderActionCmd implements Command {
+public class OrderModifyActionCmd implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		System.out.println("OrderModifyActionCmd.start");
+		
 		HttpSession session= request.getSession();
 		
 		String userId= null;
+		
 		if(session.getAttribute("userId")!= null){
 			userId= (String) session.getAttribute("userId");
 		}
-			
-		//로그인 체크
-		if(userId== null){
-			request.setAttribute("errorType", "isNotLogin");
-			return "/error/user_error.jsp";	
+		
+		//관리자가 아닌 경우 사용 불가
+		if(!userId.equals("admin")){
+			request.setAttribute("errorType", "isNotAdmin");
+			return "/error/admin_error.jsp";
 		}
 		
-		
-		//전화번호 필터링
-		System.out.println("productOrderActionCmd.start");
 		String beforeBuyerPhone = request.getParameter("buyerPhone");
 		String buyerPhone = "";
 		StringTokenizer st = new StringTokenizer(beforeBuyerPhone, "- ");
+		
 		while (st.hasMoreTokens()) {
 			buyerPhone += st.nextToken();
 		}
 		
-		
 		String beforeRcptPhone = request.getParameter("rcptPhone");
 		String rcptPhone = "";
 		StringTokenizer st1 = new StringTokenizer(beforeRcptPhone, "- ");
+		
 		while (st1.hasMoreTokens()) {
 			rcptPhone += st1.nextToken();
 		}
+		System.out.println("buyerPhone vale : " + buyerPhone);
+		System.out.println("rcptPhone vale : " + rcptPhone);
 		
 		
-		//주문 총액 계산
-		int priceSale = Integer.parseInt((String)request.getParameter("priceSale"));
-		int orderAmount= Integer.parseInt(request.getParameter("orderCount")) * priceSale + 5000;
-/*		System.out.println("buyerPhone vale : " + buyerPhone);
-		System.out.println("rcptPhone vale : " + rcptPhone);*/
-		
-		
-		//OrderVo 객체 생성
+
 		OrderVo vo = new OrderVo();
-		//ORDER_CODE : SEQUENCE
-		vo.setUserIdFk(userId);
-		vo.setProductCodePk(request.getParameter("productCode"));
 		vo.setOrderCount(Integer.parseInt(request.getParameter("orderCount")));
 		vo.setBuyerName(request.getParameter("buyerName"));
 		vo.setBuyerAddress1(request.getParameter("buyerAddress1"));
@@ -73,16 +67,17 @@ public class ProductOrderActionCmd implements Command {
 		vo.setRcptAddress2(request.getParameter("rcptAddress2"));
 		vo.setRcptPhone(rcptPhone);
 		vo.setShipMessage(request.getParameter("shipMessage"));
-		vo.setOrderAmount(orderAmount);
-		//ORDER_STATE : DEFAULT 0
-		//ORDER_DATE : SYSDATE
+		vo.setOrderState(Integer.parseInt(request.getParameter("orderState")));
+		vo.setOrderAmount(Integer.parseInt(request.getParameter("orderAmount")));
+		vo.setOrderCode(request.getParameter("orderCode"));
+		
+		
 		
 		OrderDao dao = new OrderDao();
-		int result = dao.order(vo, priceSale);
+		int result = dao.orderMofiyAction(vo);
 		
-		
-		System.out.println("productordercationcmd.end");
-		return "/main.do";
+		System.out.println("OrderModifyActionCmd.end");
+		return "OrderManageView.do";
 		
 	}//end execute method
 }//end class

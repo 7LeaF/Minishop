@@ -16,7 +16,7 @@
        <div class="col-md-4 col-sm-12">
        	<a href="${project}/main.do">
          <!-- <h1 class="logo"><i class="glyphicon glyphicon-tag"></i> Mini Shop</h1> -->
-         <img src="${pageContext.request.contextPath}/resources/images/Minishop-logo-resize.png" width="200" height="67">
+         <img src="${project}/resources/images/Minishop-logo-resize.png" width="200" height="67">
         </a>
          <p class="subtext">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small>1조 미니 프로젝트 : 소규모 쇼핑몰</small></p>
        </div>
@@ -29,8 +29,8 @@
 	        &nbsp;|&nbsp;
 	       <a href="LogoutAction.do">로그아웃</a>
 	       	&nbsp;|&nbsp;
-	       <a href="${project}/admin/admin_main.jsp">관리자</a>
-	       <br>${sessionScope.userId }님 반갑습니다.
+	       <a href="AdminMainView.do">관리자</a>
+	       <br>${sessionScope.userId}님 반갑습니다.
        	</c:when>
        	<c:when test="${!empty sessionScope.userId}">
 	       <a href="UserModifyView.do">회원관리</a>
@@ -69,7 +69,7 @@
 	           <li><a href="NoticeList.do"><p style="color:SlateBlue;">공지사항</p></a></li>
 	           <li><a href="ProductManageView.do"><p style="color:SlateBlue;">상품관리</p></a></li>
 	           <li><a href="OrderManageView.do"><p style="color:SlateBlue;">주문관리</p></a></li>
-	           <li><a href="${project}/admin/user_manage.jsp"><p style="color:SlateBlue;">회원관리</p></a></li>
+	           <li><a href="UserManageView.do"><p style="color:SlateBlue;">회원관리</p></a></li>
 	           <li><a href="QnaList.do"><p style="color:SlateBlue;">Q&A 게시판</p></a></li>
            </c:when>
            <c:otherwise>
@@ -78,8 +78,11 @@
 			        <a class="dropdown-toggle" data-toggle="dropdown" href="#">카테고리<span class="caret"></span></a>
 			        <ul class="dropdown-menu">
 			          <li><a href="ProductList.do?category_code=all">모두</a></li>
-			          <li><a href="ProductList.do?category_code=0001">0001</a></li>
-			          <li><a href="ProductList.do?category_code=0002">0002</a></li>
+			          <li><a href="ProductList.do?category_code=0001">동물인형</a></li>
+			          <li><a href="ProductList.do?category_code=0002">식물인형</a></li>
+			          <li><a href="ProductList.do?category_code=0003">곤충인형</a></li>
+			          <li><a href="ProductList.do?category_code=0004">음식인형</a></li>
+			          <li><a href="ProductList.do?category_code=0005">캐릭터인형</a></li>
 			        </ul>
 			   </li>
 	           <li><a href="OrderCheckView.do">주문조회</a></li>
@@ -89,9 +92,9 @@
            </c:choose>
          </ul>
          <ul class="nav navbar-nav navbar-right">
-          <form class="navbar-form" action="${project}/product/product_search.jsp">
+          <form class="navbar-form" action="${project}/product/ProductSearch.do">
            <div class="form-group">
-             <input type="text" class="form-control" placeholder="Search...">
+             <input type="text" class="form-control" placeholder="Search..." name="search">
            </div>
            <button type="submit" class="btn btn-default">Search</button>
           </form>

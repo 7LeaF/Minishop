@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import command.Command;
+import command.*;
 import command.admin.*;
 import command.board.notice.*;
 import command.board.qna.*;
@@ -45,6 +45,10 @@ public class FrontController extends HttpServlet {
 
 		System.out.println("호출한 커맨드 : " + com);
 		
+		
+
+		
+		
 		//관리자 페이지 기능
 		if(com.equals("/AdminMainView.do")){
 			command= new AdminMainViewCmd();
@@ -70,7 +74,20 @@ public class FrontController extends HttpServlet {
 			command= new UserManageViewCmd();
 			viewPage= command.execute(request, response);
 			
+		}else if(com.equals("/OrderModifyAction.do")){
+			command= new OrderModifyActionCmd();
+			viewPage= command.execute(request, response);
+			
+		}else if(com.equals("/UserManageModifyView.do")){
+			command= new UserManageModifyViewCmd();
+			viewPage= command.execute(request, response);
+			
+		}else if(com.equals("/UserManageModifyAction.do")){
+			command= new UserManageModifyActionCmd();
+			viewPage= command.execute(request, response);
+			
 		}
+		
 		
 		
 		//공지사항 게시판 기능
@@ -160,6 +177,10 @@ public class FrontController extends HttpServlet {
 			command= new ProductViewCmd();
 			viewPage= command.execute(request, response);
 			
+		}else if(com.equals("/ProductSearch.do")){
+			command= new ProductSearchCmd();
+			viewPage= command.execute(request, response);
+			
 		}
 		
 		
@@ -194,8 +215,18 @@ public class FrontController extends HttpServlet {
 			
 		}
 		
+	
+		//회원아이디 중복 체크 ajax
+		else if(com.equals("/UserCheckAction.do")){
+			command = new UserCheckActionCmd();
+			viewPage= command.execute(request, response);
+
+		}
+		
+	
 		else{
-			viewPage= "/main.jsp";
+			command= new MainViewCmd();
+			viewPage= command.execute(request, response);
 		}
 		
 		

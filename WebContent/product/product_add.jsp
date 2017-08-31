@@ -21,7 +21,7 @@
 			</div>
 			
 			<div class="jumbotron" style="padding-top: 30px; padding-bottom: 15px;">
-			<form class="form-horizontal" action="ProductAddAction.do">
+			<form class="form-horizontal" action="ProductAddAction.do" method="post" enctype="multipart/form-data">
 				
 				<div class="form-group">
 				  <label class="control-label col-md-2" for="userId">카테고리:</label>
@@ -74,14 +74,14 @@
 				<div class="form-group">
 				  <label class="control-label col-md-3" for="userEmail">상품 표시 이미지:</label>
 				  <div class="col-md-9">
-				  	<input type="text" class="form-control" placeholder="파일명.jpg" name="productImages1">
+				  	<input type="file" class="form-control" placeholder="파일명.jpg" name="productImages1">
 				  </div>
 				</div>
 				
 				<div class="form-group">
 				  <label class="control-label col-md-3" for="userEmail">상품 상세 이미지:</label>
 				  <div class="col-md-9">
-				  	<input type="text" class="form-control" placeholder="파일명.jpg" name="productImages2">
+				  	<input type="file" class="form-control" placeholder="파일명.jpg" name="productImages2">
 				  </div>
 				</div>
 				

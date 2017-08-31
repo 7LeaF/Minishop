@@ -44,7 +44,7 @@
             </div>
     	</div>
 	</c:forEach>
-</div> 
 </div>
+</div> <!-- div container end -->
 </body>
 </html>

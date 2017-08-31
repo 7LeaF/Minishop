@@ -2,6 +2,7 @@ package command.admin;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -19,11 +20,32 @@ public class OrderManageViewCmd implements Command {
 			throws ServletException, IOException {
 		
 		HttpSession session= request.getSession();
-		String userIdPk = (String)session.getAttribute("userId");
-		System.out.println(userIdPk);
+			
+		String userId= null;
+		
+		if(session.getAttribute("userId")!= null){
+			userId= (String) session.getAttribute("userId");
+		}
+		
+		//관리자가 아닌 경우 사용 불가
+		if(!userId.equals("admin")){
+			request.setAttribute("errorType", "isNotAdmin");
+			return "/error/admin_error.jsp";
+		}
+		
+		//결제 미완
 		OrderDao orderDao = new OrderDao();
-		ArrayList<OrderVo> order = orderDao.orderOrderCheckView(userIdPk);
-		request.setAttribute("order", order);
+		ArrayList<HashMap<String, String>> voList = orderDao.getOrderManageView("0");
+		
+		request.setAttribute("voList", voList);
+		
+		
+		//결제 완료
+		OrderDao orderDao2 = new OrderDao();
+		ArrayList<HashMap<String, String>> voList2 = orderDao.getOrderManageView("1");
+		
+		request.setAttribute("voList2", voList2);
+		
 		
 		return "/admin/order_manage.jsp";
 		

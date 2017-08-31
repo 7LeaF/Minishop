@@ -11,50 +11,78 @@
 
 <jsp:include page="/layout/header.jsp" />
 
-<h1> 관리자 주문 관리 페이지 order_manage.jsp</h1>
+<div class="container">
+<p style="padding-left:10px;"><a href="main.do">관리자</a> > <a href="OrderManageView.do">주문관리</a></p>
 
-<c:forEach var="order" items="${order}">
+	<h3 style="text-align: center;">상품 주문관리</h3>
+	<br>
+	
+	<div class="row">
+       <div class="col-md-offset-1 col-md-10">
+       <div class="table-responsive">
+           <p class="lead">쇼핑몰 결제 완료 건</p>  
+           <table id="mytable" class="table table-custom">
+                  
+			<thead>
+				<th style= "width: 30%;background-color: #cccccc;">상품 명</th>
+				<th style= "width: 20%;background-color: #cccccc;">주문 회원</th>
+				<th style= "width: 20%;background-color: #cccccc;">판매가</th>
+				<th style= "width: 10%;background-color: #cccccc;">수량</th>
+				<th style= "width: 20%;background-color: #cccccc;text-align: left;">주문금액(배송비포함)</th>
+			</thead>
+  			
+  			<c:forEach var="vo2" items="${requestScope.voList2}">	
+  			<tbody>
+			    <tr>
+			    <td><a href="OrderDetailView.do?orderCode=${vo2.orderCode}">${vo2.productName}</a></td>
+			    <td>${vo2.buyerName}</td>
+				<td>${vo2.priceSale}</td>
+			    <td>${vo2.orderCount}</td>
+			    <td style="text-align: left;">${vo2.orderAmount}원</td>
+			    </tr>
+   			</tbody>
+   			</c:forEach>
+   			
+		</table>
+	</div>
+	</div>
+	</div> <!-- end div row -->
+	
+		
+	<br><br>
+	
 
-<a href="ProductView.do?product_Code=${order.productCodePk}">
-<img src="${project}/resources/images/${order.productImage1}"></a>
-상품명 : ${order.productName}<br>
-상품코드 : ${order.productCodePk}<br>
-상품상세설명 : ${order.productMessage}<br>
-상품가 : ${order.productSale}<br>
-상품수량 : ${order.orderAmount}<br>
-
-구매자 이름:${order.buyerName}<br>
-구매자 주소:${order.buyerAddress1}<br>
-${order.buyerAddress2}<br>
-구매자 이메일 : ${order.buyerEmail}<br>
-구매자 전화번호:${order.buyerPhone}<br>
-<br>
-
-배송지 수취인:${order.rcptName}<br>
-배송지 주소:${order.rcptAddress1}<br>
-${order.rcptAddress2}<br>
-배송지 전화번호:${order.rcptPhone}<br>
-배송시 메세지:${order.rcptMessage}<br>
-
-배송상태 코드:${order.orderState}<br>
-
-<c:choose>
-<c:when test="${order.orderState == 0}"><br>
-	주문 확인중
-</c:when>
-<c:when test="${order.orderState == 1}"><br>
-	배송 준비중
-</c:when>
-<c:when test="${order.orderState == 2}"><br>
-	현재 배송중
-</c:when>
-<c:when test="${order.orderState == 3}"><br>
-	배송 완료됨
-</c:when>
-</c:choose>
-
-</c:forEach>
-
+	<div class="row">
+       <div class="col-md-offset-1 col-md-10">
+       <div class="table-responsive">
+           <p class="lead">쇼핑몰 결제 미완 건</p>  
+           <table id="mytable" class="table table-custom">
+                  
+			<thead>
+				<th style= "width: 30%;background-color: #cccccc;">상품 명</th>
+				<th style= "width: 20%;background-color: #cccccc;">주문 회원</th>
+				<th style= "width: 20%;background-color: #cccccc;">판매가</th>
+				<th style= "width: 10%;background-color: #cccccc;">수량</th>
+				<th style= "width: 20%;background-color: #cccccc;text-align: left;">주문금액(배송비포함)</th>
+			</thead>
+  			
+  			<c:forEach var="vo" items="${requestScope.voList}">	
+  			<tbody>
+			    <tr>
+			    <td><a href="OrderDetailView.do?orderCode=${vo.orderCode}">${vo.productName}</a></td>
+			    <td>${vo.buyerName}</td>
+				<td>${vo.priceSale}</td>
+			    <td>${vo.orderCount}</td>
+			    <td style="text-align: left;">${vo.orderAmount}원</td>
+			    </tr>
+   			</tbody>
+   			</c:forEach>
+   			
+		</table>
+	</div>
+	</div>
+	</div> <!-- end div row -->
+</div>
 
 
 </body>

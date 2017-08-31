@@ -24,10 +24,10 @@
 		</ol>
 		<div class="carousel-inner">
 			<div class="item active">
-				<img src="${project}/resources/images/bigsale1.jpg">
+				<img src="${project}/resources/images/carousel/bigsale1.jpg">
 			</div>
 			<div class="item">
-				<img src="${project}/resources/images/openevent1.jpg">
+				<img src="${project}/resources/images/carousel/openevent1.jpg">
 			</div>
 	<!-- 			<div class="item">
 					<img src="resources/images/1.jpg">
@@ -39,65 +39,78 @@
 		<a class="right carousel-control" href="#myCarousel" data-slide="next">
 			<span class="glyphicon glyphicon-chevron-right"></span>
 		</a>
-	</div>
+	</div> <!-- div container end -->	
 
 
-    <div class="row">
-          <div class="col-xs-6 col-sm-4">
+
+<p class="newitem-font">★★금주 NEW ITEM★★</p>
+
+<div class="row">
+	<c:forEach var="vo" items="${requestScope.newItem}" varStatus="status">
+	<c:if test="${not status.first and (status.index) % 3 == 0}">
+		</div>
+		<div class="row">
+	</c:if>
+	
+		<div class="col-xs-6 col-sm-4">
             <div class="thumbnail">
-                <img class="img-responsive" src="${project}/resources/images/products/product_diva1.jpg" alt="송하나 인형">
+                <img class="img-thumbnail" src="${pageContext.request.contextPath}/resources/images/products/${vo.productImage1}" alt="${vo.productImage1}">
                 <div class="add-to-cart">
                       <a href="#" class="glyphicon glyphicon-shopping-cart pull-right" data-toggle="tooltip" data-placement="top" title="Add to cart"></a>
                 </div>
 
                 <div class="caption">
-                  <h4 class="pull-right">&#8361;15,000</h4>
-                  <h4><a href="product/product_detail.jsp">송하나 인형</a></h4>
+                  
+                  <h4>상품 이름 : <a href="ProductView.do?productCode=${vo.productCode}">${vo.productName}</a></h4>
+                  <h4>상품 설명 : ${vo.productMessage}</h4>
+                  <h4>가격: &#8361;<del>${vo.priceRetail}</del> → &#8361;${vo.priceSale}</h4>
+            	  <h4>상품 수량 : ${vo.productQnty}</h4>
                   <div class="ratings">
                       <p class="pull-right"><a href="#">25 reviews</a></p>
                       <p><span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span></p>
                   </div>
                 </div>
             </div>
-          </div>
+    	</div>
+	</c:forEach>
+</div>
 
-          <div class="col-xs-6 col-sm-4">
+
+<br><hr>
+
+
+<p class="hotitem-font">★★ 금주 HOT ITEM★★</p>
+
+<div class="row">
+	<c:forEach var="vo" items="${requestScope.hotItem}" varStatus="status">
+	<c:if test="${not status.first and (status.index) % 3 == 0}">
+		</div>
+		<div class="row">
+	</c:if>
+	
+		<div class="col-xs-6 col-sm-4">
             <div class="thumbnail">
-                <img class="img-responsive" src="${project}/resources/images/products/product_ant1.jpg" alt="개미 인형">
+                <img class="img-thumbnail" src="${pageContext.request.contextPath}/resources/images/products/${vo.productImage1}" alt="${vo.productImage1}">
                 <div class="add-to-cart">
                       <a href="#" class="glyphicon glyphicon-shopping-cart pull-right" data-toggle="tooltip" data-placement="top" title="Add to cart"></a>
                 </div>
 
                 <div class="caption">
-                  <h4 class="pull-right">&#8361;17,000</h4>
-                  <h4><a href="product/product_detail.jsp">개미 인형</a></h4>
+                  
+                  <h4>상품 이름 : <a href="ProductView.do?productCode=${vo.productCode}">${vo.productName}</a></h4>
+                  <h4>상품 설명 : ${vo.productMessage}</h4>
+                  <h4>가격: &#8361;<del>${vo.priceRetail}</del> → &#8361;${vo.priceSale}</h4>
+            	  <h4>상품 수량 : ${vo.productQnty}</h4>
                   <div class="ratings">
-                      <p class="pull-right"><a href="#">2 reviews</a></p>
+                      <p class="pull-right"><a href="#">25 reviews</a></p>
                       <p><span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span></p>
                   </div>
                 </div>
             </div>
-          </div>
+    	</div>
+	</c:forEach>
+</div>
 
-          <div class="col-xs-6 col-sm-4">
-            <div class="thumbnail">
-                <img class="img-responsive" src="${project}/resources/images/products/product_bear1.jpg" alt="곰 인형">
-                <div class="add-to-cart">
-                      <a href="#" class="glyphicon glyphicon-shopping-cart pull-right" data-toggle="tooltip" data-placement="top" title="Add to cart"></a>
-                </div>
-
-                <div class="caption">
-                  <h4 class="pull-right">&#8361;22,000</h4>
-                  <h4><a href="product/product_detail.jsp">곰 인형</a></h4>
-                  <div class="ratings">
-                      <p class="pull-right"><a href="#">3 reviews</a></p>
-                      <p><span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span> <span class="glyphicon glyphicon-star"></span></p>
-                  </div>
-                </div>
-            </div>
-          </div>
-      </div> <!-- close div row -->
-</div> <!-- close div container -->
-
+</div> <!-- div container end -->
 </body>
 </html>

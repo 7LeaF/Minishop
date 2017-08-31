@@ -11,8 +11,10 @@
 
 <jsp:include page="/layout/header.jsp" />
 
+<div class="container">
 <h1> 장바구니 페이지 </h1>
 
+</div>
 
 </body>
 </html>

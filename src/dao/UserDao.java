@@ -3,14 +3,14 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import util.db.JdbcUtil;
 import vo.UserVo;
 
 public class UserDao {
 	
-	//사용자 로그인
-	
+	//사용자 ID 존재하는지 확인
 	public int isId(String userId){
 		Connection conn= JdbcUtil.getConnection();
 		PreparedStatement pstmt= null;
@@ -39,6 +39,7 @@ public class UserDao {
 		return -1; //데이터베이스 오류
 	}
 	
+	//회원 인증
 	public int UserAuth(String userId, String userPassword){
 		Connection conn= JdbcUtil.getConnection();
 		PreparedStatement pstmt= null;
@@ -146,6 +147,8 @@ public class UserDao {
 		Connection conn= JdbcUtil.getConnection();
 		PreparedStatement pstmt= null;
 		
+		System.out.println(vo.getUserId());
+		
 		//user_id, user_password, user_name, user_address1, user_address2, user_phone, user_email
 		String SQL= "UPDATE users SET user_password=?, user_name=?, user_address1=?, user_address2=?, user_phone=?, user_email=? WHERE user_id=?";
 		
@@ -170,5 +173,67 @@ public class UserDao {
 		return -1; //데이터베이스 오류
 		
 	}//end join method
+	
+	
+	//회원정보관리 리스트 
+	public ArrayList<UserVo> getUserList(){
+		Connection conn= JdbcUtil.getConnection();
+		PreparedStatement pstmt= null;
+		ResultSet rs= null;
+		ArrayList<UserVo> voList = new ArrayList<UserVo>();
+		String SQL= "select * from users";
+		
+		try{
+			pstmt= conn.prepareStatement(SQL);
+			rs= pstmt.executeQuery();
+			
+			while(rs.next()){
+				UserVo vo= new UserVo();
+				vo.setUserId(rs.getString("user_id"));
+				vo.setUserPassword(rs.getString("user_password"));
+				vo.setUserName(rs.getString("user_name"));
+				vo.setUserAddress1(rs.getString("user_address1"));
+				vo.setUserAddress2(rs.getString("user_address2"));
+				vo.setUserPhone(rs.getString("user_phone"));
+				vo.setUserEmail(rs.getString("user_email"));
+				System.out.println("userid = = = " + rs.getString("user_id"));
+				
+				voList.add(vo);
+			}
+			return voList;
+		} catch(Exception e){
+			e.printStackTrace();
+		} finally{
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+		}
+		return null; //데이터베이스 오류
+	}// UserVo method end
+	
+	
+	//회원 수 조회
+	public String getTotalUsers(String UserCount) {
+		Connection conn= JdbcUtil.getConnection();
+		PreparedStatement pstmt= null;
+		ResultSet rs= null;
+		
+		String SQL = "select count(*) as cnt from users";
+		
+		try{
+			pstmt= conn.prepareStatement(SQL);
+			rs= pstmt.executeQuery();
+			rs.next();
+			UserCount = rs.getString("cnt"); //1 , count(*)
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+		}
+		return UserCount;
+	}
 	
 }//end class

@@ -256,4 +256,30 @@ public class NoticeBoardDao {
 		}
 	}//addHit method end
 	
+	
+	//공지사항 게시글 수 조회
+	public String getTotalNotice(String NoticeCount) {
+		Connection conn= JdbcUtil.getConnection();
+		PreparedStatement pstmt= null;
+		ResultSet rs= null;
+		
+		String SQL = "select count(*) as cnt from notice_board";
+		
+		try{
+			pstmt= conn.prepareStatement(SQL);
+			rs= pstmt.executeQuery();
+			rs.next();
+			NoticeCount = rs.getString("cnt"); //1 , count(*)
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+		}
+		return NoticeCount;
+	}
+	
+	
 }//class end

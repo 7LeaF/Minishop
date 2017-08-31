@@ -6,6 +6,33 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Mini Shop</title>
+
+<script type="text/javascript">
+function isIdFunction() {
+	var userId = $('#userId').val();	
+$.ajax({
+		type: 'GET',
+		url: 'UserCheckAction.do',
+		data: {'userId': userId },
+		dataType: 'html',
+		success: function(data) {
+			if($.trim(data)=='cant'){
+				//$('#userIdForm').addClass('has-error');
+				$('#userIdForm').removeClass('has-success').addClass('has-error');
+				$('#userIdMark').removeClass('glyphicon glyphicon-ok form-control-feedback').addClass('glyphicon glyphicon-remove form-control-feedback');
+				$('#checkMessage').html('<b>사용 불가</b>');	
+			}else{
+				$('#userIdForm').removeClass('has-error').addClass('has-success');
+				$('#userIdMark').removeClass('glyphicon glyphicon-remove form-control-feedback').addClass('glyphicon glyphicon-ok form-control-feedback');
+				$('#checkMessage').html('<b>사용 가능</b>');	
+			}
+			
+		}
+	});	
+}
+</script>
+
+
 </head>
 <body>
 
@@ -23,9 +50,12 @@
 			<div class="jumbotron" style="padding-top: 30px; padding-bottom: 15px;">
 			<form action="JoinAction.do" method="post">
 				
-				<div class="form-group">
-				  <label for="userId">ID:</label>
-				  <input type="text" class="form-control" placeholder="아이디" name="userId">
+				<div class="form-group has-feedback" id="userIdForm">
+				  <label for="userId">ID:</label> <span id="checkMessage"></span>
+				  <div>
+				  	<input type="text" class="form-control" placeholder="아이디" name="userId" id="userId" onblur="isIdFunction();">
+				  	<span style="padding-top: 25px;" id="userIdMark"></span>
+				  </div>
 				</div>
 				<div class="form-group">
 				  <label for="userPassword">Password:</label>
@@ -70,6 +100,7 @@
 		</div>
 		<div class="col-md-3"></div>
 	</div>
+	
 </div> <!-- close div container  -->
 
 </body>

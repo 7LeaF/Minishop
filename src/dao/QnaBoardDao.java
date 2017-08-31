@@ -58,12 +58,6 @@ public class QnaBoardDao {
 		PreparedStatement pstmt= null;
 		ResultSet rs= null;
 
-/*		String SQL= "SELECT rnum, qna_idx, qna_title, qna_content, qna_writer, qna_date, qna_hit, qna_available, qna_group, qna_step, qna_indent"
-				+ " FROM (SELECT rownum as rnum, qna_idx, qna_title, qna_content, qna_writer, qna_date, qna_hit, qna_available, qna_group, qna_step, qna_indent" 
-				+ " FROM (SELECT qna_idx, qna_title, qna_content, qna_writer, qna_date, qna_hit, qna_available, qna_group, qna_step, qna_indent"
-				+ " FROM qna_board where qna_available=1 ORDER BY qna_group DESC, qna_step ASC))"
-				+ " WHERE rnum between ? and ?";
-*/		
 		String SQL= "SELECT rnum, qna_idx, qna_title, qna_content, qna_writer, qna_date, qna_hit, qna_available, qna_group, qna_step, qna_indent"
 				+ " FROM (SELECT rownum as rnum, qna_idx, qna_title, qna_content, qna_writer, qna_date, qna_hit, qna_available, qna_group, qna_step, qna_indent" 
 				+ " FROM (SELECT qna_idx, qna_title, qna_content, qna_writer, qna_date, qna_hit, qna_available, qna_group, qna_step, qna_indent"
@@ -335,5 +329,56 @@ public class QnaBoardDao {
 		return -1; //데이터베이스 오류
 		
 	}//reply method end
+	
+	
+	//Q&A 게시글 삭제 갯수
+	public String getDeleteTotalQna(String delCount) {
+		Connection conn= JdbcUtil.getConnection();
+		PreparedStatement pstmt= null;
+		ResultSet rs= null;
+		
+		String SQL = "select count(*) as cnt from qna_board where qna_available = 0";
+		
+		try{
+			pstmt= conn.prepareStatement(SQL);
+			rs= pstmt.executeQuery();
+			rs.next();
+			delCount = rs.getString("cnt"); //1 , count(*)
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+		}
+		return delCount;
+	}
+	
+	
+	//Q&A 게시글 총 갯수 조회
+	public String getTotalQna(String QnaCount) {
+		Connection conn= JdbcUtil.getConnection();
+		PreparedStatement pstmt= null;
+		ResultSet rs= null;
+		
+		String SQL = "select count(*) as cnt from qna_board where qna_available = 1";
+		
+		try{
+			pstmt= conn.prepareStatement(SQL);
+			rs= pstmt.executeQuery();
+			rs.next();
+			QnaCount = rs.getString("cnt"); //1 , count(*)
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+		}
+		return QnaCount;
+	}
+	
 	
 }//qnaBoardDao end
