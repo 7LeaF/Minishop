@@ -78,11 +78,11 @@
 			        <a class="dropdown-toggle" data-toggle="dropdown" href="#">카테고리<span class="caret"></span></a>
 			        <ul class="dropdown-menu">
 			          <li><a href="ProductList.do?category_code=all">모두</a></li>
-			          <li><a href="ProductList.do?category_code=0001">동물인형</a></li>
-			          <li><a href="ProductList.do?category_code=0002">식물인형</a></li>
-			          <li><a href="ProductList.do?category_code=0003">곤충인형</a></li>
-			          <li><a href="ProductList.do?category_code=0004">음식인형</a></li>
-			          <li><a href="ProductList.do?category_code=0005">캐릭터인형</a></li>
+			          <li><a href="ProductList.do?category_code=동물인형">동물인형</a></li>
+			          <li><a href="ProductList.do?category_code=식물인형">식물인형</a></li>
+			          <li><a href="ProductList.do?category_code=곤충인형">곤충인형</a></li>
+			          <li><a href="ProductList.do?category_code=음식인형">음식인형</a></li>
+			          <li><a href="ProductList.do?category_code=캐릭터인형">캐릭터인형</a></li>
 			        </ul>
 			   </li>
 	           <li><a href="OrderCheckView.do">주문조회</a></li>

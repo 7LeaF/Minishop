@@ -45,25 +45,30 @@
 			    	주문 일자 : ${order.orderDate}<br>
 			    </td>
 			    <td>
+
 			   	<c:choose>
 					<c:when test="${order.orderState == 0}"><!-- 주문완료 후 입금 대기 -->
-						입금 확인중<br>
-						<img src="${project}/resources/images/orderState1.jpg" />
+						<p id="stateMeeesage">입금 확인중</p>			
+						<img id="stateImage" src="${project}/resources/images/orderState1.jpg" />				
 					</c:when>
 					<c:when test="${order.orderState == 1}"><!-- 결제완료 후 배송 준비 -->
-						배송 준비중<br>
-						<img src="${project}/resources/images/orderState2.jpg" />
+						<p id="stateMeeesage">배송 준비중</p>
+						<img id="stateImage" src="${project}/resources/images/orderState2.jpg" />
 					</c:when>
 					<c:when test="${order.orderState == 2}"><!-- 상품발송 후 도착 대기 -->
-						현재 배송중<br>
-						<img src="${project}/resources/images/orderState3.jpg" />
+						<p id="stateMeeesage">현재 배송중</p>
+						<img id="stateImage" src="${project}/resources/images/orderState3.jpg" />
 					</c:when>
 					<c:when test="${order.orderState == 3}"><!-- 수취주소 로 상품 도착 -->
-						배송 완료됨<br>
-						<img src="${project}/resources/images/orderState4.jpg" />
+						<p id="stateMeeesage">배송 완료됨</p>
+						<img id="stateImage" src="${project}/resources/images/orderState4.jpg" />
 					</c:when>
 					</c:choose>
+					<br>
+					<span class="glyphicon glyphicon-chevron-left" onclick="modifyStateLeft();"></span>
+			  	    <span class="glyphicon glyphicon-chevron-right" onclick="modifyStateRight();"></span>
 				</td>
+				
 				<td>
 				
 				<div class="form-group">
@@ -85,7 +90,7 @@
 	
 	
 	<form action="OrderModifyAction.do" method="post">
-	<input type="hidden" value="${order.orderState}" name= "orderState">
+	<input type="hidden" value="${order.orderState}" name= "orderState" id= "orderState">
 	<input type="hidden" value="${order.orderCode}" name= "orderCode">
 	<input type="hidden" value="${order.orderCount}" name= "orderCount" id="orderCount">
 	<input type="hidden" value="${order.orderAmount}" name= "orderAmount" id="orderAmount">

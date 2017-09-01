@@ -66,3 +66,54 @@ function sameAddress(){
 	$("#rcptAddress2").val($("#buyerAddress2").val());
 	$("#rcptPhone").val($("#buyerPhone").val());
 }
+
+
+function modifyStateRight() {
+	var stateMessage= $("#stateMeeesage");
+	var stateImage= $("#stateImage");
+	var orderState= $("#orderState");
+
+	if(stateMessage.text()=='입금 확인중'){
+		stateMessage.text("배송 준비중");
+		stateImage.attr('src','../resources/images/orderState2.jpg');
+		orderState.val('1');
+		//<img src="${project}/resources/images/orderState2.jpg" />
+	}else if(stateMessage.text()=='배송 준비중'){
+		stateMessage.text("현재 배송중");
+		stateImage.attr('src','../resources/images/orderState3.jpg');
+		orderState.val('2');
+	}else if(stateMessage.text()=='현재 배송중'){
+		stateMessage.text("배송 완료됨");
+		stateImage.attr('src','../resources/images/orderState4.jpg');
+		orderState.val('3');
+	}else if(stateMessage.text()=='배송 완료됨'){
+		stateMessage.text("입금 확인중");
+		stateImage.attr('src','../resources/images/orderState1.jpg');
+		orderState.val('0');
+	}
+}
+
+function modifyStateLeft() {
+	var stateMessage= $("#stateMeeesage");
+	var stateImage= $("#stateImage");
+	var orderState= $("#orderState");
+
+	if(stateMessage.text()=='입금 확인중'){
+		stateMessage.text("배송 완료됨");
+		stateImage.attr('src','../resources/images/orderState4.jpg');
+		orderState.val('3');
+	}else if(stateMessage.text()=='배송 완료됨'){
+		stateMessage.text("현재 배송중");
+		stateImage.attr('src','../resources/images/orderState3.jpg');
+		orderState.val('2');
+	}else if(stateMessage.text()=='현재 배송중'){
+		stateMessage.text("배송 준비중");
+		stateImage.attr('src','../resources/images/orderState2.jpg');
+		orderState.val('1');
+	}else if(stateMessage.text()=='배송 준비중'){
+		stateMessage.text("입금 확인중");
+		stateImage.attr('src','../resources/images/orderState1.jpg');
+		orderState.val('0');
+	}
+}
+

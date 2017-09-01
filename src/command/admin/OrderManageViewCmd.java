@@ -47,6 +47,21 @@ public class OrderManageViewCmd implements Command {
 		request.setAttribute("voList2", voList2);
 		
 		
+		//상품 발송
+		OrderDao orderDao3 = new OrderDao();
+		ArrayList<HashMap<String, String>> voList3 = orderDao.getOrderManageView("2");
+		
+		request.setAttribute("voList3", voList3);
+		
+		
+		//수취인 확인
+		OrderDao orderDao4 = new OrderDao();
+		ArrayList<HashMap<String, String>> voList4 = orderDao.getOrderManageView("3");
+		
+		request.setAttribute("voList4", voList4);
+		
+		
+		
 		return "/admin/order_manage.jsp";
 		
 	}//end execute method
